@@ -1,6 +1,6 @@
 _version: 1
 app:
-  title: "Cinebox"
+  title: "PashaFlix"
 nav:
   settings: "Настройки"
   back: "Назад"
@@ -383,7 +383,7 @@ wizard:
   next: "Далее"
   skip: "Пропустить"
   start: "Начать смотреть"
-  language_title: "Добро пожаловать в Cinebox"
+  language_title: "Добро пожаловать в PashaFlix"
   language_body: "Язык интерфейса, названий и описаний фильмов"
   screen_title: "Края экрана"
   screen_body: "Если уголки обрезаны, сдвиньте их стрелками ← →"

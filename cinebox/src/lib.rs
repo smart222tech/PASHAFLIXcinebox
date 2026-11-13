@@ -9,6 +9,7 @@ mod i18n;
 pub mod platform;
 mod screens;
 mod services;
+mod sources;
 mod theme;
 mod widgets;
 
@@ -19,7 +20,7 @@ use rust_i18n::t;
 
 const ICON_PX: u32 = 256;
 
-/// Wayland `app_id` / X11 `WM_CLASS`; must match the `.desktop` file name so the
+/// Wayland `app_id` / X11 `WM_CLASS`; must match the .desktop file name so the
 /// desktop shows the right name and icon for the window.
 const APP_ID: &str = "io.github.dexsper.cinebox";
 

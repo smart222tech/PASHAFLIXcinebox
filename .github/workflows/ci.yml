@@ -180,3 +180,11 @@ jobs:
       # Debug-signed, so it needs no secrets and runs for forks too.
       - name: Build
         run: ./scripts/android-build.sh debug
+
+      - name: Upload Android APK
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: PashaFlix-Android-debug
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14
