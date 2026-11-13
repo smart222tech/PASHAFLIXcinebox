@@ -24,7 +24,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.github.dexsper.cinebox"
+        applicationId = "com.smart222tech.pashaflix"
         minSdk = 26
         targetSdk = 36
         versionName = cargoVersion

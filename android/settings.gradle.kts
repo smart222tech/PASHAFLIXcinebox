@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "cinebox"
+rootProject.name = "PASHAFLIX"
 include(":app")
 
 fun rustlsPlatformVerifierMaven(): File {

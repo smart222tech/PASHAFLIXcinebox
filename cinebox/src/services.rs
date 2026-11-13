@@ -5,6 +5,7 @@ pub(crate) mod images;
 pub(crate) mod jobs;
 pub(crate) mod library;
 pub(crate) mod settings_input;
+pub(crate) mod sources;
 pub(crate) mod toasts;
 
 use std::collections::HashSet;
