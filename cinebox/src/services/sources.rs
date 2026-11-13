@@ -80,7 +80,6 @@ impl ZonaPageKind {
 pub(crate) struct ZonaMetadata {
     pub kind: ZonaPageKind,
     pub title: String,
-    pub original_title: Option<String>,
     pub year: Option<u16>,
     pub description: Option<String>,
     pub poster_url: Option<String>,
@@ -100,7 +99,6 @@ pub(crate) fn parse_zona_page(url: &str, html: &str) -> Option<ZonaMetadata> {
         return None;
     }
 
-    let original_title = metas.get("og:site_name").cloned();
     let description = metas.get("og:description").cloned()
         .or_else(|| metas.get("description").cloned())
         .map(|value| clean_text(&value))
@@ -116,7 +114,6 @@ pub(crate) fn parse_zona_page(url: &str, html: &str) -> Option<ZonaMetadata> {
     Some(ZonaMetadata {
         kind,
         title,
-        original_title,
         year,
         description,
         poster_url,
@@ -231,7 +228,7 @@ fn find_seasons(html: &str) -> Vec<u16> {
         let start = offset + found;
         let tail = &html[start..html.len().min(start + 80)];
         if let Some((_, value)) = tail.split_once('=') {
-            let digits: String = value.trim_start_matches([' ', '"', '\''])
+            let digits: String = value.trim_start_matches(&[' ', '"', '\''][..])
                 .chars().take_while(char::is_ascii_digit).collect();
             if let Ok(number) = digits.parse::<u16>() {
                 if number > 0 { seasons.insert(number); }
