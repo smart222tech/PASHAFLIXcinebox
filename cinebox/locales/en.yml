@@ -1,6 +1,6 @@
 _version: 1
 app:
-  title: "Cinebox"
+  title: "PashaFlix"
 nav:
   settings: "Settings"
   back: "Back"
@@ -383,7 +383,7 @@ wizard:
   next: "Next"
   skip: "Skip"
   start: "Start watching"
-  language_title: "Welcome to Cinebox"
+  language_title: "Welcome to PashaFlix"
   language_body: "Language of the interface, movie titles, and descriptions"
   screen_title: "Screen edges"
   screen_body: "If the corner marks are cut off, move them in with ← →"
