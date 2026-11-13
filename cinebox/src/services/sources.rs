@@ -35,6 +35,25 @@ impl SourceSite {
         }
     }
 
+    /// User-provided public pages used as reproducible integration-test targets.
+    pub(crate) fn sample_urls(self) -> &'static [&'static str] {
+        match self {
+            Self::Zona => &[
+                "https://w140.zona.plus/movies/odisseya-2026",
+                "https://w140.zona.plus/tvseries/ukrytie-2023",
+            ],
+            Self::KinoBesplatno => &[
+                "https://kinobesplatno.online/filmy/",
+                "https://kinobesplatno.online/serialy/",
+                "https://kinobesplatno.online/serialy/legend-of-zang-hai-2025#watch",
+            ],
+            Self::Kinogo => &["https://kinogo.la/62846-ayda.html"],
+            Self::LordFilm => &["https://lordfilm.org/91891-esche-17.html"],
+            Self::Seasonvar => &["https://seasonvar.ru/serial-51129-Kogda_ya_vstrechu_lunu.html"],
+            Self::Kinokrad => &["https://kinokrad.cc/473218-the-lord-of-the-rings-the-rings-of-power.html"],
+        }
+    }
+
     fn hosts(self) -> &'static [&'static str] {
         match self {
             Self::Zona => &["zona.plus", "zona.mobi"],
@@ -249,6 +268,17 @@ mod tests {
         assert_eq!(SourceSite::from_url("https://www.kinogo.la/film"), Some(SourceSite::Kinogo));
         assert_eq!(SourceSite::from_url("https://evilzona.plus.example/"), None);
         assert_eq!(SourceSite::from_url("https://example.com/"), None);
+    }
+
+    #[test]
+    fn every_requested_source_has_a_public_test_target() {
+        for site in SourceSite::ALL {
+            assert!(!site.label().is_empty());
+            assert!(!site.sample_urls().is_empty());
+            for url in site.sample_urls() {
+                assert_eq!(SourceSite::from_url(url), Some(site));
+            }
+        }
     }
 
     #[test]
